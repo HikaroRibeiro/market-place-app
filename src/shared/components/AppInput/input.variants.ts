@@ -4,9 +4,9 @@ import { tv, type VariantProps } from "tailwind-variants";
 export const appInputVariants = tv({
     slots: {
         container: "w-full my-4",
-        wrapper: "flex-row items-center border-b border-gray-200 pb-5",
+        wrapper: "flex-row items-center border-b border-gray-200 pb-2",
         input: "bg-transparent text-gray-500 placeholder:text-gray-400 text-base flex-1",
-        label: "mb-1 text-gray-300 text-xs font-semibold",
+        label: "mb-3 text-gray-300 text-xs font-semibold",
         error: "text-red-500 text-sm text-danger mt-1",
     },
     variants: {
@@ -26,3 +26,5 @@ export const appInputVariants = tv({
         isDisabled: false
     },
     })
+
+    export type AppInputVariantsProps = VariantProps<typeof appInputVariants>
