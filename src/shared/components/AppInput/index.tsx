@@ -59,7 +59,7 @@ export const AppInput: FC<AppInputProps> = ({
     })
 
     const styles = appInputVariants({
-        isError,
+        isError: !!error,
         isFocused,
         isDisabled
     })
@@ -82,12 +82,18 @@ export const AppInput: FC<AppInputProps> = ({
                     onFocus={handleFocus} 
                     className={styles.input({isFocused: true})} {...textInputProps}
                     onChangeText={handleTextChange}
-                    value={value} 
+                    value={value}
+                    secureTextEntry={showPassword} 
                 />
 
-                <TouchableOpacity>
-                    <Ionicons name="eye-off-outline" size={22} color="black" />
-                </TouchableOpacity>
+                {
+                    secureTextEntry && (
+                        <TouchableOpacity activeOpacity={0.7} onPress={handlePasswordToggle}>
+                            <Ionicons name={showPassword ? "eye-outline" : "eye-off-outline"} size={22} color="black" />
+                        </TouchableOpacity>
+                    )
+                }
+
 
             </Pressable>
 
