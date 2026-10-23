@@ -10,7 +10,7 @@ import { Ionicons } from "@expo/vector-icons";
 import { FC } from "react";
 import { useAppInputviewModel } from "./useAppInputViewModel";
 
-interface AppInputProps extends TextInputProps, AppInputVariantsProps {
+export interface AppInputProps extends TextInputProps, AppInputVariantsProps {
     label?: string,
     leftIcon?: keyof typeof Ionicons.glyphMap,
     rightIcon?: keyof typeof Ionicons.glyphMap,

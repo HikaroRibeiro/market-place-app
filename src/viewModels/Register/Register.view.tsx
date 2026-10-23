@@ -1,7 +1,10 @@
 import { FC, useState } from "react";
-import { View, Text, TouchableOpacity } from "react-native"
+import { Text, TouchableOpacity, ScrollView } from "react-native"
 import { useRegisterViewModel } from "./useRegister.viewModel";
-import { AppInput } from "../../shared/components/AppInput";
+import { AppInputController } from "../../shared/components/AppInputController";
+import { AuthFormHeader } from "../../shared/components/AuthFormHeader";
+import { router } from "expo-router";
+import { KeyboardContainer } from "../../shared/components/KeyboardContainer";
 
 export const RegisterView: FC<ReturnType<typeof useRegisterViewModel>> = ({
     control,
@@ -12,26 +15,65 @@ export const RegisterView: FC<ReturnType<typeof useRegisterViewModel>> = ({
     const [email, setEmail] = useState('')
 
     return (
-        <View className="flex-1 justify-center">
+        <KeyboardContainer>
+            <ScrollView className="flex-1 px-[40px]">
+                <AuthFormHeader 
+                    title="Crie sua conta" 
+                    subtitle="Informe seus dados pessoais e de acesso."  
+                />
 
-            <AppInput 
-                leftIcon="mail-outline" 
-                label="E-mail" 
-                value={email} 
-                onChangeText={setEmail}
-                error="E-mail com formato inválido." 
-            />
+                <AppInputController
+                    label="NOME"
+                    leftIcon="person-outline" 
+                    control={control}
+                    name="name" 
+                    errors={errors} 
+                />
 
-            <AppInput 
-                leftIcon="lock-closed-outline" 
-                label="Senha" 
-                secureTextEntry={true}
-                error="Senha deve ter pelo menos 6 caracteres."    
-            />
 
-            <TouchableOpacity onPress={() => {onSubmit()}}>
-                <Text>Ir para login</Text>
-            </TouchableOpacity>
-        </View>
+                <AppInputController
+                    label="E-MAIL"
+                    leftIcon="mail-outline" 
+                    control={control}
+                    name="email" 
+                    errors={errors} 
+                />
+
+                <AppInputController
+                    label="TELEFONE"
+                    leftIcon="call-outline" 
+                    control={control}
+                    name="phone" 
+                    errors={errors} 
+                />
+
+                <AppInputController
+                    label="SENHA"
+                    leftIcon="lock-closed-outline" 
+                    control={control}
+                    name="password" 
+                    errors={errors}
+                    secureTextEntry 
+                />
+
+                <AppInputController
+                    label="CONFIRMAR SENHA"
+                    leftIcon="lock-closed-outline" 
+                    control={control}
+                    name="confirmPassword" 
+                    errors={errors}
+                    secureTextEntry
+                />
+
+                <TouchableOpacity onPress={() => {onSubmit()}}>
+                    <Text>Registrar</Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity onPress={() => {router.push("/login")}}>
+                    <Text>Login</Text>
+                </TouchableOpacity>
+            </ScrollView>
+
+        </KeyboardContainer>
     );
 }

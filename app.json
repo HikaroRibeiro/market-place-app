@@ -5,17 +5,17 @@
     "version": "1.0.0",
     "orientation": "portrait",
     "scheme": "marketplace",
-    "icon": "./assets/play_store_512.png",
+    "icon": "./assets/logo.png",
     "userInterfaceStyle": "light",
     "ios": {
       "bundleIdentifier": "com.marketplaceapp",
       "supportsTablet": true,
-      "icon": "./assets/play_store_512.png"
+      "icon": "./assets/logo.png"
     },
     "android": {
       "adaptiveIcon": {
         "backgroundColor": "#E6F4FE",
-        "foregroundImage": "./assets/play_store_512.png"
+        "foregroundImage": "./assets/logo.png"
       },
       "predictiveBackGestureEnabled": false,
       "package": "com.marketplaceapp"

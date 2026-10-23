@@ -3,7 +3,7 @@ import { Redirect } from "expo-router";
 export default function App() {
 
     const user = {
-        token: '123',
+        token: '1234',
         name: 'Claude',
     }
 
