@@ -1,5 +1,5 @@
 import { FC, useState } from "react";
-import { Text, TouchableOpacity, ScrollView } from "react-native"
+import { Text, TouchableOpacity, ScrollView, View } from "react-native"
 import { useRegisterViewModel } from "./useRegister.viewModel";
 import { AppInputController } from "../../shared/components/AppInputController";
 import { AuthFormHeader } from "../../shared/components/AuthFormHeader";
@@ -23,35 +23,41 @@ export const RegisterView: FC<ReturnType<typeof useRegisterViewModel>> = ({
                 />
 
                 <AppInputController
-                    label="NOME"
-                    leftIcon="person-outline" 
                     control={control}
                     name="name" 
-                    errors={errors} 
-                />
-
-
-                <AppInputController
-                    label="E-MAIL"
-                    leftIcon="mail-outline" 
-                    control={control}
-                    name="email" 
-                    errors={errors} 
+                    leftIcon="person-outline" 
+                    label="NOME"
+                    placeholder="Seu nome completo."
+                    errors={errors}
                 />
 
                 <AppInputController
                     label="TELEFONE"
                     leftIcon="call-outline" 
                     control={control}
-                    name="phone" 
+                    name="phone"
+                    placeholder="(99) 99999-9999" 
                     errors={errors} 
                 />
+                
+                <Text className="text-base mt-6 font-bold text-gray-500">Acesso</Text>
+
+                <AppInputController
+                    label="E-MAIL"
+                    leftIcon="mail-outline" 
+                    control={control}
+                    name="email"
+                    placeholder="mail@example.com.br" 
+                    errors={errors} 
+                />
+
 
                 <AppInputController
                     label="SENHA"
                     leftIcon="lock-closed-outline" 
                     control={control}
-                    name="password" 
+                    name="password"
+                    placeholder="Sua senha." 
                     errors={errors}
                     secureTextEntry 
                 />
@@ -61,6 +67,7 @@ export const RegisterView: FC<ReturnType<typeof useRegisterViewModel>> = ({
                     leftIcon="lock-closed-outline" 
                     control={control}
                     name="confirmPassword" 
+                    placeholder="Confirme sua senha."
                     errors={errors}
                     secureTextEntry
                 />
