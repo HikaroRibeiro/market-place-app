@@ -1,5 +1,5 @@
 import { useMutation } from "@tanstack/react-query";
-import * as authService from "../../../shared/services/auth.service";
+import * as authService from "../../services/auth.service";
 import { RegisterHttpParams } from "../../interfaces/http/register";
 
 export const useRegisterMutation = () => {

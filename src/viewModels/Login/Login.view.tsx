@@ -7,10 +7,10 @@ import { FC } from "react";
 import { useLoginViewModel } from "./useLogin.viewModel";
 import { AppInputController } from "../../shared/components/AppInputController";
 
-export const LoginView: FC<ReturnType<typeof useLoginViewModel>> = ({control, handleSubmit}) => {
+export const LoginView: FC<ReturnType<typeof useLoginViewModel>> = ({control, onSubmit}) => {
     return (
         <KeyboardContainer>
-            <ScrollView className="flex-1 px-[40px]">
+            <View className="flex-1 px-[40px] justify-center items-center">
                 <AuthFormHeader 
                     title="Login" 
                     subtitle="Informe seus dados pessoais e de acesso."  
@@ -33,10 +33,15 @@ export const LoginView: FC<ReturnType<typeof useLoginViewModel>> = ({control, ha
                     secureTextEntry
                 />
 
+                <TouchableOpacity onPress={onSubmit}>
+                    <Text>Login</Text>
+                </TouchableOpacity>
+
                 <TouchableOpacity onPress={() => {router.push("/register")}}>
                     <Text>Ir para cadastro</Text>
                 </TouchableOpacity>
-            </ScrollView> 
+                
+            </View> 
         </KeyboardContainer>
     );
 }
