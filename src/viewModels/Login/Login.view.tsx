@@ -6,6 +6,7 @@ import { KeyboardContainer } from "../../shared/components/KeyboardContainer";
 import { FC } from "react";
 import { useLoginViewModel } from "./useLogin.viewModel";
 import { AppInputController } from "../../shared/components/AppInputController";
+import { AppButton } from "../../shared/components/AppButton";
 
 export const LoginView: FC<ReturnType<typeof useLoginViewModel>> = ({control, onSubmit}) => {
     return (
@@ -33,9 +34,9 @@ export const LoginView: FC<ReturnType<typeof useLoginViewModel>> = ({control, on
                     secureTextEntry
                 />
 
-                <TouchableOpacity onPress={onSubmit}>
-                    <Text>Login</Text>
-                </TouchableOpacity>
+                <AppButton onPress={onSubmit}>
+                    Login
+                </AppButton>
 
                 <TouchableOpacity onPress={() => {router.push("/register")}}>
                     <Text>Ir para cadastro</Text>
