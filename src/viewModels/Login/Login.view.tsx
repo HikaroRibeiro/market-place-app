@@ -34,8 +34,12 @@ export const LoginView: FC<ReturnType<typeof useLoginViewModel>> = ({control, on
                     secureTextEntry
                 />
 
-                <AppButton onPress={onSubmit}>
-                    Login
+                <AppButton 
+                    variant="filled" 
+                    rightIcon="arrow-forward-outline" 
+                    onPress={onSubmit}
+                >
+                    Teste      
                 </AppButton>
 
                 <TouchableOpacity onPress={() => {router.push("/register")}}>
