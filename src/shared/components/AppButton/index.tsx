@@ -1,6 +1,6 @@
 import { TouchableOpacity, Text, TouchableOpacityProps, ActivityIndicator } from "react-native"
 import { appButtonVariants, AppButtonVariantsProps } from "./button.variants";
-import { Children, FC } from "react";
+import { FC } from "react";
 import { Ionicons } from "@expo/vector-icons";
 import { colors } from "../../../styles/colors";
 
@@ -16,7 +16,8 @@ export const AppButton: FC<AppButtonProps> = ({
     children,
     variant = "filled",
     isLoading,
-    isDisabled, 
+    isDisabled,
+    className, 
     ...rest}) => {
 
     const styles = appButtonVariants({
@@ -54,7 +55,7 @@ export const AppButton: FC<AppButtonProps> = ({
     }
 
     return (
-        <TouchableOpacity className={styles.base()} {...rest} >
+        <TouchableOpacity className={styles.base({className})} {...rest} >
             {renderContent()}
         </TouchableOpacity>
     )

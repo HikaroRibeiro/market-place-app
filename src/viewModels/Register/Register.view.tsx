@@ -5,11 +5,14 @@ import { AppInputController } from "../../shared/components/AppInputController";
 import { AuthFormHeader } from "../../shared/components/AuthFormHeader";
 import { router } from "expo-router";
 import { KeyboardContainer } from "../../shared/components/KeyboardContainer";
+import { AppButton } from "../../shared/components/AppButton";
+import { Ionicons } from "@expo/vector-icons";
 
 export const RegisterView: FC<ReturnType<typeof useRegisterViewModel>> = ({
     control,
     onSubmit,
-    errors
+    errors,
+    handleSelectAvatar
 }) => {
 
     const [email, setEmail] = useState('')
@@ -21,6 +24,10 @@ export const RegisterView: FC<ReturnType<typeof useRegisterViewModel>> = ({
                     title="Crie sua conta" 
                     subtitle="Informe seus dados pessoais e de acesso."  
                 />
+
+                <TouchableOpacity onPress={handleSelectAvatar}>
+                    <Ionicons name="cloud-upload-outline" size={32} color="black" />
+                </TouchableOpacity>
 
                 <AppInputController
                     control={control}
@@ -72,13 +79,21 @@ export const RegisterView: FC<ReturnType<typeof useRegisterViewModel>> = ({
                     secureTextEntry
                 />
 
-                <TouchableOpacity onPress={() => {onSubmit()}}>
-                    <Text>Registrar</Text>
-                </TouchableOpacity>
+                <AppButton
+                    className="mt-6" 
+                    onPress={onSubmit}>
+                        Registrar
+                </AppButton>
 
-                <TouchableOpacity onPress={() => {router.push("/login")}}>
-                    <Text>Login</Text>
-                </TouchableOpacity>
+                <View className="mt-16">
+                    <Text className="text-base text-gray-300 mb-6">Ja possui uma conta?</Text>
+                    <AppButton 
+                        variant="outlined" 
+                        onPress={() => router.push("/login")}>
+                            Login
+                    </AppButton>
+                </View>
+
             </ScrollView>
 
         </KeyboardContainer>
