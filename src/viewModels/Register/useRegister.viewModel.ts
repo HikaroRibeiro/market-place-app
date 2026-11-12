@@ -17,29 +17,17 @@ export const useRegisterViewModel = () => {
             message: 'Selecione um avatar para o seu perfil',
             options: [
                 {
-                    test: 'Avatar 1',
+                    test: 'Galeria',
                     icon: 'images',
                     variant: 'primary',
-                    onPress: () => console.log('Avatar 1'),
+                    onPress: () => console.log('Galeria'),
                 },
                 {
-                    test: 'Avatar 2',
-                    icon: 'images',
+                    test: 'Camera',
+                    icon: 'camera',
                     variant: 'primary',
-                    onPress: () => console.log('Avatar 2')
-                },
-                {
-                    test: 'Avatar 3',
-                    icon: 'images',
-                    variant: 'primary',
-                    onPress: () => console.log('Avatar 3')
-                },
-                {
-                    test: 'Avatar 4',
-                    icon: 'images',
-                    variant: 'primary',
-                    onPress: () => console.log('Avatar 4')
-                },
+                    onPress: () => console.log('Camera')
+                }
             ]
         })
     }

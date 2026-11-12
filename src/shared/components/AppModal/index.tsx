@@ -1,6 +1,5 @@
 import { Modal, TouchableWithoutFeedback, View } from "react-native";
 import { useModalStore } from "../../store/modal-store";
-import { Text } from "react-native";
 
 export const AppModal = () => {
 
