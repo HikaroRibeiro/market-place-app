@@ -4,9 +4,12 @@ import { yupResolver } from "@hookform/resolvers/yup"
 import { useRegisterMutation } from "../../shared/queries/auth/use-register.mutation";
 import { useUserStore } from "../../shared/store/user-store";
 import { useAppModals } from "../../shared/hooks/useAppModals";
-
+import { useCamera } from "../../shared/hooks/useCamera";
+import { useGallery } from "../../shared/hooks/useGallery";
 
 export const useRegisterViewModel = () => {
+    const {openCamera} = useCamera({});
+    const {openGallery} = useGallery({});
     const userRegisterMutation = useRegisterMutation();
     const {setSession, user} = useUserStore();
     const modals = useAppModals();
@@ -20,13 +23,16 @@ export const useRegisterViewModel = () => {
                     test: 'Galeria',
                     icon: 'images',
                     variant: 'primary',
-                    onPress: () => console.log('Galeria'),
+                    onPress: async () => {
+                        const imageUri = await openGallery();
+                        console.log(imageUri);
+                    },
                 },
                 {
                     test: 'Camera',
                     icon: 'camera',
                     variant: 'primary',
-                    onPress: () => console.log('Camera')
+                    onPress: openCamera,
                 }
             ]
         })
