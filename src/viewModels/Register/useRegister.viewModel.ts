@@ -6,36 +6,15 @@ import { useUserStore } from "../../shared/store/user-store";
 import { useAppModals } from "../../shared/hooks/useAppModals";
 import { useCamera } from "../../shared/hooks/useCamera";
 import { useGallery } from "../../shared/hooks/useGallery";
+import { useImage } from "../../shared/hooks/useImage";
 
 export const useRegisterViewModel = () => {
-    const {openCamera} = useCamera({});
-    const {openGallery} = useGallery({});
     const userRegisterMutation = useRegisterMutation();
     const {setSession, user} = useUserStore();
-    const modals = useAppModals();
+    const {handleSelectImage} = useImage({});
 
-    const handleSelectAvatar = () => {
-        modals.showSelection({
-            title: 'Selecione um avatar',
-            message: 'Selecione um avatar para o seu perfil',
-            options: [
-                {
-                    test: 'Galeria',
-                    icon: 'images',
-                    variant: 'primary',
-                    onPress: async () => {
-                        const imageUri = await openGallery();
-                        console.log(imageUri);
-                    },
-                },
-                {
-                    test: 'Camera',
-                    icon: 'camera',
-                    variant: 'primary',
-                    onPress: openCamera,
-                }
-            ]
-        })
+    const handleSelectAvatar = async () => {
+        await handleSelectImage()
     }
 
     const {control, handleSubmit, formState: {errors}} = useForm<RegisterFormData>({
